@@ -36,7 +36,7 @@ namespace CheckoutKata.Tests
             checkout.Scan("C");
             checkout.Scan("D");
 
-            Assert.Equal(0, checkout.GetTotalPrice());
+            Assert.Equal(50, checkout.GetTotalPrice());
         }
     }
 }
