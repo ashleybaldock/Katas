@@ -56,5 +56,29 @@ namespace CheckoutKata.Tests
             Assert.Equal(0, result.SubTotal);
             Assert.Equal(new Dictionary<string, int> { { "B", 1 }, { "C", 2 } }, result.RemainingItems);
         }
+
+        [Fact]
+        public void PricingRule_ProcessWithDictionaryContainingOneMatchingItem_ReturnsZeroResultAndDictionaryWithItemRemoved()
+        {
+            var pricingRule = new PricingRule("A", 40);
+
+            var result = pricingRule.Process(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } });
+
+            Assert.Equal(40, result.SubTotal);
+            Assert.Equal(new Dictionary<string, int> { { "A", 0 }, { "C", 2 } }, result.RemainingItems);
+        }
+
+        [Fact]
+        public void PricineRule_Process_DoesNotModifyOriginalDictionary()
+        {
+            var pricingRule = new PricingRule("A", 40);
+
+            var inputDictionary = new Dictionary<string, int> { { "A", 1 }, { "C", 2 } };
+
+            var result = pricingRule.Process(inputDictionary);
+
+            Assert.Equal(new Dictionary<string, int> { { "A", 0 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } }, inputDictionary);
+        }
     }
 }
