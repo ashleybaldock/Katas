@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using CheckoutKata.Tests;
 
 namespace CheckoutKata
 {
     public class Checkout : ICheckout
     {
-        private PricingRule pricingRule;
-
         private int totalPrice = 0;
 
-        public Checkout(PricingRule pricingRule)
+        private List<PricingRule> pricingRules;
+
+        public Checkout(List<PricingRule> pricingRules)
         {
-            this.pricingRule = pricingRule;
+            this.pricingRules = pricingRules;
         }
 
         public int GetTotalPrice()
@@ -21,7 +22,7 @@ namespace CheckoutKata
 
         public void Scan(string item)
         {
-            if (pricingRule != null)
+            foreach (var pricingRule in pricingRules)
             {
                 totalPrice += pricingRule.Matches(item);
             }

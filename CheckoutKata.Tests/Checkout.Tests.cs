@@ -9,7 +9,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithNoItems_GetTotalPrice_ReturnsZero()
         {
-            var checkout = new Checkout(null);
+            var checkout = new Checkout(new List<PricingRule>());
 
             Assert.Equal(0, checkout.GetTotalPrice());
         }
@@ -17,7 +17,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithSomeItemsAndNoPricingRules_GetTotalPrice_ReturnsZero()
         {
-            var checkout = new Checkout(null);
+            var checkout = new Checkout(new List<PricingRule>());
 
             checkout.Scan("A");
             checkout.Scan("B");
@@ -30,7 +30,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithSomeItemsAndAPricingRule_GetTotalPrice_ReturnsCorrectValue()
         {
-            var checkout = new Checkout(new PricingRule("A", 50));
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("A", 50) });
 
             checkout.Scan("A");
             checkout.Scan("B");
@@ -43,7 +43,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithSomeItemsAndADifferentPricingRule_GetTotalPrice_ReturnsCorrectValue()
         {
-            var checkout = new Checkout(new PricingRule("B", 40));
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
 
             checkout.Scan("A");
             checkout.Scan("B");
@@ -56,7 +56,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithNoItemsAndAPricingRule_GetTotalPrice_ReturnsZero()
         {
-            var checkout = new Checkout(new PricingRule("B", 40));
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
 
             Assert.Equal(0, checkout.GetTotalPrice());
         }
@@ -64,7 +64,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithAPricingRuleAndMismatchedItems_GetTotalPrice_ReturnsZero()
         {
-            var checkout = new Checkout(new PricingRule("B", 40));
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
 
             checkout.Scan("C");
             checkout.Scan("D");
@@ -75,7 +75,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithAPricingRuleAndMatchingItems_GetTotalPrice_ReturnsCorrectSummedPrice()
         {
-            var checkout = new Checkout(new PricingRule("B", 40));
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
 
             checkout.Scan("B");
             checkout.Scan("B");
@@ -86,7 +86,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithAPricingRuleAndItems_GetTotalPrice_ReturnsCorrectSummedPrice()
         {
-            var checkout = new Checkout(new PricingRule("B", 40));
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
 
             checkout.Scan("C");
             checkout.Scan("D");
