@@ -9,7 +9,7 @@ namespace CheckoutKata
     {
         private List<PricingRule> pricingRules;
 
-        private Dictionary<string, int> scannedItems = new Dictionary<string, int>();
+        private Dictionary<Item, int> scannedItems = new Dictionary<Item, int>();
 
         public Checkout(List<PricingRule> pricingRules)
         {
@@ -31,11 +31,12 @@ namespace CheckoutKata
 
         public void Scan(string item)
         {
-            if (!scannedItems.ContainsKey(item))
+            var newItem = new Item(item);
+            if (!scannedItems.ContainsKey(newItem))
             {
-                scannedItems.Add(item, 0);
+                scannedItems.Add(newItem, 0);
             }
-            scannedItems[item] += 1;
+            scannedItems[newItem] += 1;
         }
     }
 }

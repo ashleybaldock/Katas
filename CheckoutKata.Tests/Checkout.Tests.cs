@@ -164,5 +164,23 @@ namespace CheckoutKata.Tests
             
             Assert.Equal(150, checkout.GetTotalPrice());
         }
+
+        [Fact]
+        public void GivenACheckout_ScanWithEmptyString_ThrowsException()
+        {
+            var checkout = new Checkout(new List<PricingRule>());
+
+            Exception ex = Assert.Throws<ArgumentException>(() => checkout.Scan(""));
+            Assert.Equal("Item SKU must be a single character string", ex.Message);
+        }
+
+        [Fact]
+        public void GivenACheckout_ScanWithMultiCharacterString_ThrowsException()
+        {
+            var checkout = new Checkout(new List<PricingRule>());
+
+            Exception ex = Assert.Throws<ArgumentException>(() => checkout.Scan("AA"));
+            Assert.Equal("Item SKU must be a single character string", ex.Message);
+        }
     }
 }

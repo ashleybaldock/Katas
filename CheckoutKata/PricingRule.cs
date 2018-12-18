@@ -5,7 +5,7 @@ namespace CheckoutKata.Tests
 {
     public class PricingRule
     {
-        private string ruleSku;
+        private Item ruleSku;
 
         private int ruleCount;
 
@@ -14,14 +14,14 @@ namespace CheckoutKata.Tests
         public PricingRule(string ruleSkus, int rulePrice)
         {
             // Assume that ruleSkus contains the same sku repeated
-            this.ruleSku = ruleSkus[0].ToString();
+            this.ruleSku = new Item(ruleSkus[0].ToString());
             this.ruleCount = ruleSkus.Length;
             this.rulePrice = rulePrice;
         }
 
-        public RuleResult Process(Dictionary<string, int> dictionary)
+        public RuleResult Process(Dictionary<Item, int> dictionary)
         {
-            var dictionaryCopy = new Dictionary<string, int>(dictionary);
+            var dictionaryCopy = new Dictionary<Item, int>(dictionary);
             var matchCount = 0;
             if (dictionaryCopy.ContainsKey(ruleSku) && dictionaryCopy[ruleSku] >= ruleCount)
             {

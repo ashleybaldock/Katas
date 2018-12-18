@@ -11,10 +11,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 40);
 
-            var result = pricingRule.Process(new Dictionary<string, int> ());
+            var result = pricingRule.Process(new Dictionary<Item, int> ());
 
             Assert.Equal(0, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int>(), result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int>(), result.RemainingItems);
         }
 
         [Fact]
@@ -22,10 +22,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 40);
 
-            var result = pricingRule.Process(new Dictionary<string, int> { { "B", 1 }, { "C", 2 } });
+            var result = pricingRule.Process(new Dictionary<Item, int> { { new Item("B"), 1 }, { new Item("C"), 2 } });
 
             Assert.Equal(0, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int> { { "B", 1 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("B"), 1 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
 
         [Fact]
@@ -33,10 +33,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 40);
 
-            var result = pricingRule.Process(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } });
+            var result = pricingRule.Process(new Dictionary<Item, int> { { new Item("A"), 1 }, { new Item("C"), 2 } });
 
             Assert.Equal(40, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int> { { "A", 0 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 0 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
 
         [Fact]
@@ -44,12 +44,12 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 40);
 
-            var inputDictionary = new Dictionary<string, int> { { "A", 1 }, { "C", 2 } };
+            var inputDictionary = new Dictionary<Item, int> { { new Item("A"), 1 }, { new Item("C"), 2 } };
 
             var result = pricingRule.Process(inputDictionary);
 
-            Assert.Equal(new Dictionary<string, int> { { "A", 0 }, { "C", 2 } }, result.RemainingItems);
-            Assert.Equal(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } }, inputDictionary);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 0 }, { new Item("C"), 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 1 }, { new Item("C"), 2 } }, inputDictionary);
         }
 
         // This test passes 'by accident'
@@ -58,10 +58,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("AAA", 130);
 
-            var result = pricingRule.Process(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } });
+            var result = pricingRule.Process(new Dictionary<Item, int> { { new Item("A"), 1 }, { new Item("C"), 2 } });
 
             Assert.Equal(0, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 1 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
 
         [Fact]
@@ -69,10 +69,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("AAA", 130);
 
-            var result = pricingRule.Process(new Dictionary<string, int> { { "A", 3 }, { "C", 2 } });
+            var result = pricingRule.Process(new Dictionary<Item, int> { { new Item("A"), 3 }, { new Item("C"), 2 } });
 
             Assert.Equal(130, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int> { { "A", 0 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 0 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
 
         [Fact]
@@ -80,10 +80,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("AAA", 130);
 
-            var result = pricingRule.Process(new Dictionary<string, int> { { "A", 4 }, { "C", 2 } });
+            var result = pricingRule.Process(new Dictionary<Item, int> { { new Item("A"), 4 }, { new Item("C"), 2 } });
 
             Assert.Equal(130, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int> { { "A", 1 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 1 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
 
         [Fact]
@@ -91,10 +91,10 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("AAA", 130);
 
-            var result = pricingRule.Process(new Dictionary<string, int> { { "A", 8 }, { "C", 2 } });
+            var result = pricingRule.Process(new Dictionary<Item, int> { { new Item("A"), 8 }, { new Item("C"), 2 } });
 
             Assert.Equal(260, result.SubTotal);
-            Assert.Equal(new Dictionary<string, int> { { "A", 2 }, { "C", 2 } }, result.RemainingItems);
+            Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 2 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
     }
 }
