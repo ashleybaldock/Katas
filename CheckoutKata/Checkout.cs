@@ -7,8 +7,6 @@ namespace CheckoutKata
 {
     public class Checkout : ICheckout
     {
-        private int totalPrice = 0;
-
         private List<PricingRule> pricingRules;
 
         private Dictionary<string, int> scannedItems = new Dictionary<string, int>();

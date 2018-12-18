@@ -7,17 +7,12 @@ namespace CheckoutKata.Tests
     {
         private string ruleSku;
 
-        public int RulePrice { get; private set; }
+        private int rulePrice;
 
         public PricingRule(string ruleSku, int rulePrice)
         {
             this.ruleSku = ruleSku;
-            this.RulePrice = rulePrice;
-        }
-
-        public int Matches(string itemSku)
-        {
-            return itemSku == ruleSku ? RulePrice : 0;
+            this.rulePrice = rulePrice;
         }
 
         public RuleResult Process(Dictionary<string, int> dictionary)
@@ -29,7 +24,7 @@ namespace CheckoutKata.Tests
                 matchCount = dictionaryCopy[ruleSku];
                 dictionaryCopy[ruleSku] = 0;
             }
-            return new RuleResult(dictionaryCopy, matchCount * RulePrice);
+            return new RuleResult(dictionaryCopy, matchCount * rulePrice);
         }
     }
 }
