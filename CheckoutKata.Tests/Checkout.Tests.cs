@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace CheckoutKata.Tests
@@ -71,10 +72,6 @@ namespace CheckoutKata.Tests
             Assert.Equal(0, checkout.GetTotalPrice());
         }
         
-        /*
-            I slightly skipped ahead here by implementing too much to make the last test pass :(
-            So these two tests pass already
-         */
         [Fact]
         public void GivenACheckoutWithAPricingRuleAndMatchingItems_GetTotalPrice_ReturnsCorrectSummedPrice()
         {
@@ -97,6 +94,20 @@ namespace CheckoutKata.Tests
             checkout.Scan("B");
             
             Assert.Equal(80, checkout.GetTotalPrice());
+        }
+
+        [Fact]
+        public void GivenACheckoutWithTwoPricingRulesAndMatchingItems_GetTotalPrice_ReturnsCorrectSummedPrice()
+        {
+            var checkout = new Checkout(new List<PricingRule> {
+                new PricingRule("A", 50),
+                new PricingRule("B", 40)
+                });
+            
+            checkout.Scan("A");
+            checkout.Scan("B");
+            
+            Assert.Equal(90, checkout.GetTotalPrice());
         }
     }
 }
