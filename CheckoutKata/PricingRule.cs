@@ -19,5 +19,10 @@ namespace CheckoutKata.Tests
         {
             return itemSku == ruleSku ? RulePrice : 0;
         }
+
+        public RuleResult Process(Dictionary<string, int> dictionary)
+        {
+            return new RuleResult(new Dictionary<string, int>(), 0);
+        }
     }
 }

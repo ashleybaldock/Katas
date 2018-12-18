@@ -123,5 +123,17 @@ namespace CheckoutKata.Tests
             
             Assert.Equal(100, checkout.GetTotalPrice());
         }
+
+        [Fact]
+        public void GivenACheckoutWithPricingRuleAndMatchingItem_CallingGetTotalPriceTwice_ReturnsSame()
+        {
+            var checkout = new Checkout(new List<PricingRule> { new PricingRule("A", 50) });
+            
+            checkout.Scan("A");
+            checkout.Scan("A");
+            
+            Assert.Equal(100, checkout.GetTotalPrice());
+            Assert.Equal(100, checkout.GetTotalPrice());
+        }
     }
 }

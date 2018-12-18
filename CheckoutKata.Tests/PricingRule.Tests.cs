@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace CheckoutKata.Tests
@@ -31,6 +32,17 @@ namespace CheckoutKata.Tests
             var pricingRule = new PricingRule("C", 40);
 
             Assert.Equal(0, pricingRule.Matches("B"));
+        }
+
+        [Fact]
+        public void PricingRule_ProcessWithEmptyDictionary_ReturnsEmptyRuleResult()
+        {
+            var pricingRule = new PricingRule("A", 40);
+
+            var result = pricingRule.Process(new Dictionary<string, int> ());
+
+            Assert.Equal(0, result.SubTotal);
+            Assert.Equal(new Dictionary<string, int>(), result.RemainingItems);
         }
     }
 }
