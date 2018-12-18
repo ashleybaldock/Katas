@@ -22,13 +22,14 @@ namespace CheckoutKata.Tests
 
         public RuleResult Process(Dictionary<string, int> dictionary)
         {
+            var dictionaryCopy = new Dictionary<string, int>(dictionary);
             var matchCount = 0;
-            if (dictionary.ContainsKey(ruleSku))
+            if (dictionaryCopy.ContainsKey(ruleSku))
             {
-                matchCount = dictionary[ruleSku];
-                dictionary[ruleSku] = 0;
+                matchCount = dictionaryCopy[ruleSku];
+                dictionaryCopy[ruleSku] = 0;
             }
-            return new RuleResult(dictionary, matchCount * RulePrice);
+            return new RuleResult(dictionaryCopy, matchCount * RulePrice);
         }
     }
 }
