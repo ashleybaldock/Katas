@@ -10,5 +10,17 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 50);
         }
+
+        [Fact]
+        public void GivenAPricingRule_RulePricePropertyIsSetCorrectlyFromCtor()
+        {
+            var pricingRule = new PricingRule("B", 40);
+
+            Assert.Equal(40, pricingRule.RulePrice);
+
+            var pricingRule2 = new PricingRule("B", 100);
+
+            Assert.Equal(100, pricingRule2.RulePrice);
+        }
     }
 }
