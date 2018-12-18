@@ -26,5 +26,20 @@ namespace CheckoutKata.Tests
         {
             Assert.Equal("A", new Item("A").Sku);
         }
+
+        [Fact]
+        public void TwoItemsWithSameSkuAreEqual()
+        {
+            Assert.Equal(new Item("A"), new Item("A"));
+            Assert.Equal(new Item("B"), new Item("B"));
+            Assert.Equal(new Item("C"), new Item("C"));
+            Assert.Equal(new Item("D"), new Item("D"));
+        }
+
+        [Fact]
+        public void TwoItemsDifferentSkusAreNotEqual()
+        {
+            Assert.NotEqual(new Item("A"), new Item("B"));
+        }
     }
 }
