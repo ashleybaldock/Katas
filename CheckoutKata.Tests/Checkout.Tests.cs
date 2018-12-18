@@ -51,5 +51,13 @@ namespace CheckoutKata.Tests
 
             Assert.Equal(40, checkout.GetTotalPrice());
         }
+
+        [Fact]
+        public void GivenACheckoutWithNoItemsAndAPricingRule_GetTotalPrice_ReturnsZero()
+        {
+            var checkout = new Checkout(new PricingRule("B", 40));
+
+            Assert.Equal(0, checkout.GetTotalPrice());
+        }
     }
 }
