@@ -39,10 +39,22 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 40);
 
+            // var result = pricingRule.Process(new Dictionary<string, int> { { "A", 1 }, { "B", 2 } });
             var result = pricingRule.Process(new Dictionary<string, int> ());
 
             Assert.Equal(0, result.SubTotal);
             Assert.Equal(new Dictionary<string, int>(), result.RemainingItems);
+        }
+
+        [Fact]
+        public void PricingRule_ProcessWithDictionaryContainingNonMatchingItems_ReturnsZeroResultWithInputDictionary()
+        {
+            var pricingRule = new PricingRule("A", 40);
+
+            var result = pricingRule.Process(new Dictionary<string, int> { { "B", 1 }, { "C", 2 } });
+
+            Assert.Equal(0, result.SubTotal);
+            Assert.Equal(new Dictionary<string, int> { { "B", 1 }, { "C", 2 } }, result.RemainingItems);
         }
     }
 }

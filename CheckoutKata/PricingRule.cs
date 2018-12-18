@@ -22,7 +22,7 @@ namespace CheckoutKata.Tests
 
         public RuleResult Process(Dictionary<string, int> dictionary)
         {
-            return new RuleResult(new Dictionary<string, int>(), 0);
+            return new RuleResult(dictionary, 0);
         }
     }
 }
