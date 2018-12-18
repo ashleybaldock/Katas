@@ -4,12 +4,12 @@ namespace CheckoutKata.Tests
     {
         private string matchingSkus;
 
-        private int rulePrice;
+        public int RulePrice { get; private set; }
 
         public PricingRule(string matchingSkus, int rulePrice)
         {
             this.matchingSkus = matchingSkus;
-            this.rulePrice = rulePrice;
+            this.RulePrice = rulePrice;
         }
     }
 }
