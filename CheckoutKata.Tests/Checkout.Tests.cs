@@ -109,5 +109,19 @@ namespace CheckoutKata.Tests
             
             Assert.Equal(90, checkout.GetTotalPrice());
         }
+        
+        [Fact]
+        public void GivenACheckoutWithTwoIdenticalPricingRulesAndMatchingItems_GetTotalPrice_DoesNotCountItemsTwice()
+        {
+            var checkout = new Checkout(new List<PricingRule> {
+                new PricingRule("A", 50),
+                new PricingRule("A", 50)
+                });
+            
+            checkout.Scan("A");
+            checkout.Scan("A");
+            
+            Assert.Equal(100, checkout.GetTotalPrice());
+        }
     }
 }
