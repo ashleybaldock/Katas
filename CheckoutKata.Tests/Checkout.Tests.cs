@@ -151,7 +151,7 @@ namespace CheckoutKata.Tests
         }
 
         [Fact]
-        public void OrderOfRulesAffectsTotalPrice()
+        public void GivenACheckoutWithPricingRules_OrderOfRulesAffectsTotalPrice()
         {
             var checkout = new Checkout(new List<PricingRule> {
                 new PricingRule("A", 50),
