@@ -14,9 +14,10 @@ namespace CheckoutKata
 
         public int GetTotalPrice()
         {
+            // Now we have to actually implement something
             if (this.pricingRule != null)
             {
-                return 50;
+                return pricingRule.RulePrice;
             }
             return 0;
         }
