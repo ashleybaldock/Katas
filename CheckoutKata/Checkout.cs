@@ -7,7 +7,7 @@ namespace CheckoutKata
     {
         private PricingRule pricingRule;
 
-        private bool itemScanned = false;
+        private int totalPrice = 0;
 
         public Checkout(PricingRule pricingRule)
         {
@@ -16,16 +16,15 @@ namespace CheckoutKata
 
         public int GetTotalPrice()
         {
-            if (itemScanned && this.pricingRule != null)
-            {
-                return pricingRule.RulePrice;
-            }
-            return 0;
+            return totalPrice;
         }
 
         public void Scan(string item)
         {
-            itemScanned = true;
+            if (pricingRule != null)
+            {
+                totalPrice += pricingRule.Matches(item);
+            }
         }
     }
 }
