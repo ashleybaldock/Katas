@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CheckoutKata.Tests
 {
-    public class UnitTest1
+    public class CheckoutTests
     {
         [Fact]
         public void Test1()
