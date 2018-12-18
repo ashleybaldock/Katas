@@ -39,7 +39,6 @@ namespace CheckoutKata.Tests
         {
             var pricingRule = new PricingRule("A", 40);
 
-            // var result = pricingRule.Process(new Dictionary<string, int> { { "A", 1 }, { "B", 2 } });
             var result = pricingRule.Process(new Dictionary<string, int> ());
 
             Assert.Equal(0, result.SubTotal);
