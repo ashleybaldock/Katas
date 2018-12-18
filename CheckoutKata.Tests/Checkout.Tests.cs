@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace CheckoutKata.Tests
@@ -73,44 +74,6 @@ namespace CheckoutKata.Tests
         }
         
         [Fact]
-        public void GivenACheckoutWithAPricingRuleAndMatchingItems_GetTotalPrice_ReturnsCorrectSummedPrice()
-        {
-            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
-
-            checkout.Scan("B");
-            checkout.Scan("B");
-            
-            Assert.Equal(80, checkout.GetTotalPrice());
-        }
-        
-        [Fact]
-        public void GivenACheckoutWithAPricingRuleAndItems_GetTotalPrice_ReturnsCorrectSummedPrice()
-        {
-            var checkout = new Checkout(new List<PricingRule> { new PricingRule("B", 40) });
-
-            checkout.Scan("C");
-            checkout.Scan("D");
-            checkout.Scan("B");
-            checkout.Scan("B");
-            
-            Assert.Equal(80, checkout.GetTotalPrice());
-        }
-
-        [Fact]
-        public void GivenACheckoutWithTwoPricingRulesAndMatchingItems_GetTotalPrice_ReturnsCorrectSummedPrice()
-        {
-            var checkout = new Checkout(new List<PricingRule> {
-                new PricingRule("A", 50),
-                new PricingRule("B", 40)
-                });
-            
-            checkout.Scan("A");
-            checkout.Scan("B");
-            
-            Assert.Equal(90, checkout.GetTotalPrice());
-        }
-        
-        [Fact]
         public void GivenACheckoutWithTwoIdenticalPricingRulesAndMatchingItems_GetTotalPrice_DoesNotCountItemsTwice()
         {
             var checkout = new Checkout(new List<PricingRule> {
@@ -134,6 +97,33 @@ namespace CheckoutKata.Tests
             
             Assert.Equal(100, checkout.GetTotalPrice());
             Assert.Equal(100, checkout.GetTotalPrice());
+        }
+
+        [Theory]
+        [InlineData("", 0)]
+        [InlineData("A", 50)]
+        [InlineData("BB", 80)]
+        [InlineData("AABB", 180)]
+        [InlineData("ABCD", 125)]
+        [InlineData("AAAA", 200)]
+        [InlineData("DDCC", 70)]
+        [InlineData("CCCCC", 100)]
+        public void GivenACheckoutWithPricingRules_AndItems_CallingGetTotalPrice_ReturnsCorrectPrice(string items, int expectedTotalPrice)
+        {
+            var checkout = new Checkout(new List<PricingRule> {
+                new PricingRule("A", 50),
+                new PricingRule("B", 40),
+                new PricingRule("C", 20),
+                new PricingRule("D", 15),
+                });
+            
+            foreach (var item in items)
+            {
+                checkout.Scan(item.ToString());
+
+            }
+            
+            Assert.Equal(expectedTotalPrice, checkout.GetTotalPrice());
         }
     }
 }
