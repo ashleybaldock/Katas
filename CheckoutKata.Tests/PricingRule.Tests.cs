@@ -6,12 +6,6 @@ namespace CheckoutKata.Tests
     public class PricingRuleTests
     {
         [Fact]
-        public void CanCreatePricingRule_WithRuleAndPrice()
-        {
-            var pricingRule = new PricingRule("A", 50);
-        }
-
-        [Fact]
         public void GivenAPricingRule_RulePricePropertyIsSetCorrectlyFromCtor()
         {
             var pricingRule = new PricingRule("B", 40);
