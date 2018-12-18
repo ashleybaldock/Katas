@@ -8,7 +8,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithNoItems_GetTotalPrice_ReturnsZero()
         {
-            var checkout = new Checkout();
+            var checkout = new Checkout(null);
 
             Assert.Equal(0, checkout.GetTotalPrice());
         }
@@ -16,7 +16,7 @@ namespace CheckoutKata.Tests
         [Fact]
         public void GivenACheckoutWithSomeItemsAndNoPricingRules_GetTotalPrice_ReturnsZero()
         {
-            var checkout = new Checkout();
+            var checkout = new Checkout(null);
 
             checkout.Scan("A");
             checkout.Scan("B");
