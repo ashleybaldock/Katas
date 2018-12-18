@@ -125,5 +125,44 @@ namespace CheckoutKata.Tests
             
             Assert.Equal(expectedTotalPrice, checkout.GetTotalPrice());
         }
+
+        [Theory]
+        [InlineData("", 0)]
+        [InlineData("A", 50)]
+        [InlineData("AA", 100)]
+        [InlineData("AAA", 130)]
+        [InlineData("AAAA", 180)]
+        [InlineData("AAAAAA", 260)]
+        [InlineData("BBBAAA", 130)]
+        [InlineData("BAABBAAA", 230)]
+        public void GivenACheckoutWithMultiAndSingleItemPricingRules_AndItemCounts_CallingGetTotalPrice_ReturnsCorrectPrice(string items, int expectedTotalPrice)
+        {
+            var checkout = new Checkout(new List<PricingRule> {
+                new PricingRule("AAA", 130),
+                new PricingRule("A", 50),
+                });
+            
+            foreach (var item in items)
+            {
+                checkout.Scan(item.ToString());
+            }
+            
+            Assert.Equal(expectedTotalPrice, checkout.GetTotalPrice());
+        }
+
+        [Fact]
+        public void OrderOfRulesAffectsTotalPrice()
+        {
+            var checkout = new Checkout(new List<PricingRule> {
+                new PricingRule("A", 50),
+                new PricingRule("AAA", 130),
+                });
+            
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("A");
+            
+            Assert.Equal(150, checkout.GetTotalPrice());
+        }
     }
 }
