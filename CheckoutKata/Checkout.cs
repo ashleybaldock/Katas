@@ -11,7 +11,7 @@ namespace CheckoutKata
 
         public void Scan(string item)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
