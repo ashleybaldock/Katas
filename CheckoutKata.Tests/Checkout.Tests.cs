@@ -6,9 +6,11 @@ namespace CheckoutKata.Tests
     public class CheckoutTests
     {
         [Fact]
-        public void Test1()
+        public void GivenACheckoutWithNoItems_GetTotalPrice_ReturnsZero()
         {
+            var checkout = new Checkout();
 
+            Assert.Equal(0, checkout.GetTotalPrice());
         }
     }
 }
