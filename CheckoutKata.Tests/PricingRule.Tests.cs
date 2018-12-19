@@ -96,5 +96,19 @@ namespace CheckoutKata.Tests
             Assert.Equal(260, result.SubTotal);
             Assert.Equal(new Dictionary<Item, int> { { new Item("A"), 2 }, { new Item("C"), 2 } }, result.RemainingItems);
         }
+
+        [Fact]
+        public void PricingRuleCtor_WithEmptyString_ThrowsException()
+        {
+            Exception ex = Assert.Throws<ArgumentException>(() => new PricingRule("", 0));
+            Assert.Equal("PricingRule must match at least one item", ex.Message);
+        }
+
+        [Fact]
+        public void PricingRuleCtor_WithMixedItems_ThrowsException()
+        {
+            Exception ex = Assert.Throws<ArgumentException>(() => new PricingRule("AB", 0));
+            Assert.Equal("PricingRule must match only one type of item", ex.Message);
+        }
     }
 }
