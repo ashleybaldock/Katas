@@ -105,6 +105,13 @@ namespace CheckoutKata.Tests
         }
 
         [Fact]
+        public void PricingRuleCtor_WithNullskus_ThrowsException()
+        {
+            Exception ex = Assert.Throws<ArgumentException>(() => new PricingRule(null, 0));
+            Assert.Equal("PricingRule must match at least one item", ex.Message);
+        }
+
+        [Fact]
         public void PricingRuleCtor_WithMixedItems_ThrowsException()
         {
             Exception ex = Assert.Throws<ArgumentException>(() => new PricingRule("AB", 0));
