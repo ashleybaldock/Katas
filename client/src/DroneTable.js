@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import './DroneTable.css';
+import { subscribeToDroneUpdates } from './api';
 
 class DroneTable extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      drones: []
+    };
+
+    subscribeToDroneUpdates((dronePositions) => {
+      this.setState({ 
+        drones: dronePositions 
+      });
+    });
+  }
+
   renderDrones(drones) {
     return drones.map((drone, i) => (
       <tr key={i} className={drone.notMoving ? 'notMoving' : ''}>
@@ -12,7 +27,6 @@ class DroneTable extends Component {
   }
 
   render() {
-    const { drones } = this.props;
     return (
       <div className="DroneTable">
         <table>
@@ -20,7 +34,7 @@ class DroneTable extends Component {
             <th>Drone ID</th>
             <th>Current Speed</th>
           </tr>
-          {this.renderDrones(drones)}
+          {this.renderDrones(this.state.drones)}
         </table>
       </div>
     );

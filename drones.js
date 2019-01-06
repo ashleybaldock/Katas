@@ -1,5 +1,5 @@
 const io = require('socket.io-client');
-const socket = io('http://localhost:3000');
+const socket = io('http://localhost:3000/drone');
 const uuidv4 = require('uuid/v4');
 
 const start = [53.4779066,-2.247826];

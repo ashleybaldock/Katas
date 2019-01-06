@@ -6,6 +6,8 @@ var logger = require('morgan');
 var app = express();
 
 app.use(logger('dev'));
+
+// Serve dashboard UI
 app.use(express.static('client/build'));
 
 module.exports = app;
