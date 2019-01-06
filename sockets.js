@@ -1,10 +1,9 @@
 const drones = require('./db/drones');
-const geolib = require('geolib');
 
 const transformDrones = drones => {
   return Object.keys(drones).map((droneId) => ({
     id: droneId,
-    speed: (Math.random() * 10).toFixed(2)
+    speed: drones[droneId].speed()
   }));
 };
 

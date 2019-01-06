@@ -11,10 +11,20 @@ const numDrones = 100;
  */
 
 const drone = (startLocation) => {
+  const x = Math.random() / 10000;
+  const y = Math.random() / 10000;
+
+  let lastLocation = startLocation;
+
+  let stalled = false;
+
   return {
     id: uuidv4(),
     currentPosition: (timeNow) => {
-      return startLocation;
+      if (stalled) { return lastLocation; }
+      if (Math.random() > 0.999) { stalled = true; }
+      lastLocation = [lastLocation[0] + x, lastLocation[1] + y];
+      return lastLocation;
     }
   };
 };
