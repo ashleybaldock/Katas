@@ -33,7 +33,7 @@ const updateDrones = () => {
   drones.forEach(drone => {
     sendUpdate({
       id: drone.id,
-      location: drone.currentPosition(Date.now()),
+      loc: drone.currentPosition(Date.now()),
       time: Date.now()
     });
   });
