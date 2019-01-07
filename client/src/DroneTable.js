@@ -19,9 +19,10 @@ class DroneTable extends Component {
 
   renderDrones(drones) {
     return drones.map((drone, i) => (
-      <tr key={i} className={drone.notMoving ? 'notMoving' : ''}>
+      <tr key={i} className={drone.inMotion ? '' : 'notMoving'}>
         <td>{drone.id}</td>
-        <td className="cellRight">{drone.speed.toFixed(1)} km/h</td>
+        <td className="cellRight">{drone.speed.toFixed(3)} m/s</td>
+        <td className="cellRight">{(drone.speed / 1000 * 60 * 60).toFixed(2)} km/h</td>
         <td className="cellRight">{drone.lat.toFixed(6)}</td>
         <td className="cellRight">{drone.lng.toFixed(6)}</td>
       </tr>
@@ -34,10 +35,14 @@ class DroneTable extends Component {
         <table>
           <tbody>
             <tr>
-              <th>Drone ID</th>
-              <th>Current Speed</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
+              <th rowspan="2">Drone ID</th>
+              <th colspan="2">Current Speed</th>
+              <th rowspan="2">Latitude</th>
+              <th rowspan="2">Longitude</th>
+            </tr>
+            <tr>
+              <th>(m/s)</th>
+              <th>(km/h)</th>
             </tr>
             {this.renderDrones(this.state.drones)}
           </tbody>

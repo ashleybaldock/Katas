@@ -2,17 +2,26 @@ const io = require('socket.io-client');
 const socket = io('http://localhost:3000/drone');
 const uuidv4 = require('uuid/v4');
 
-const start = [53.4779066,-2.247826];
+const start = [53.4779066, -2.247826];
 
 const numDrones = 100;
 
 /*
  * Generates dummy drone test data
+ *
+ * Drones move at a constant velocity in a random direction
+ * Velocity is around 0-2m/s
+ *
+ * There's also a small chance for drones to stop moving altogether
  */
 
-const drone = (startLocation) => {
-  const x = Math.random() / 10000;
-  const y = Math.random() / 10000;
+function randomSign() {
+  return Math.random() < 0.5 ? -1 : 1;
+}
+
+const drone = (startLocation, velocityMagnitude) => {
+  const x = Math.random() / velocityMagnitude * randomSign();
+  const y = Math.random() / velocityMagnitude * randomSign();
 
   let lastLocation = startLocation;
 
@@ -30,8 +39,9 @@ const drone = (startLocation) => {
 };
 
 const drones = [];
+drones.push(drone(start, 1000000)); // This drone is always particularly slow moving, but not stationary
 for (let i = 0; i < numDrones; i++) {
-  drones.push(drone(start));
+  drones.push(drone(start, 100000));
 }
 
 
@@ -50,7 +60,5 @@ const updateDrones = () => {
 
   setTimeout(updateDrones, 1000);
 };
-
-
 
 updateDrones();

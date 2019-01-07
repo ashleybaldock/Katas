@@ -7,7 +7,7 @@ module.exports = (() => {
     if (drones.hasOwnProperty(droneUpdate.id)) {
       return drones[droneUpdate.id].updateFrom(droneUpdate);
     }
-    return drones[droneUpdate.id] = new Drone(droneUpdate);
+    return drones[droneUpdate.id] = new Drone(droneUpdate, 10);
   };
 
   const getAll = () => {
