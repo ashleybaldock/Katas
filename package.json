@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./bin/www"
+    "startDev": "./node_modules/.bin/concurrently --kill-others \"npm run startServer\" \"npm run startClientDev\" \"npm run startSim\"",
+    "startServer": "./node_modules/.bin/nodemon ./bin/www",
+    "startClientDev": "cd client && npm run start",
+    "startSim": "./node_modules/.bin/nodemon drones.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -15,6 +18,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "nodemon": "^1.18.9"
   }
 }
