@@ -22,6 +22,8 @@ class DroneTable extends Component {
       <tr key={i} className={drone.notMoving ? 'notMoving' : ''}>
         <td>{drone.id}</td>
         <td className="cellRight">{drone.speed.toFixed(1)} km/h</td>
+        <td className="cellRight">{drone.lat.toFixed(6)}</td>
+        <td className="cellRight">{drone.lng.toFixed(6)}</td>
       </tr>
     ));
   }
@@ -34,6 +36,8 @@ class DroneTable extends Component {
             <tr>
               <th>Drone ID</th>
               <th>Current Speed</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
             </tr>
             {this.renderDrones(this.state.drones)}
           </tbody>

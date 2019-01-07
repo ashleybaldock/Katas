@@ -6,3 +6,8 @@
 .cellRight {
   text-align: right;
 }
+
+td {
+  font-family: monospace;
+  padding: 5px;
+}

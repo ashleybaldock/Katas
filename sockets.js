@@ -3,7 +3,9 @@ const drones = require('./db/drones');
 const transformDrones = drones => {
   return Object.keys(drones).map((droneId) => ({
     id: droneId,
-    speed: drones[droneId].speed()
+    speed: drones[droneId].speed(),
+    lat: drones[droneId].latestLocation().lat,
+    lng: drones[droneId].latestLocation().lng
   }));
 };
 
