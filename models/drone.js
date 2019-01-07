@@ -63,6 +63,9 @@ class Drone {
 
     newSample.speed = speedFromLast(last, newSample);
 
+    /*
+     * locationHistory is begging to be refactored out into its' own class
+     */
     this.locationHistory.unshift(newSample);
     this.locationHistory = trimSamplesToWindowLength(this.locationHistory, this.windowLength);
   }
