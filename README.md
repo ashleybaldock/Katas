@@ -46,23 +46,3 @@ I chose to use WebSockets as the protocol for the drones reporting their positio
 I haven't implemented any security, since that didn't seem to be a focus in the challenge description, but this kind of system would ideally be secured against tampering with the telemetry from the drones, a simple way to implement this would be client certificate based auth for the drones and securing the websocket connections with TLS. The frontend/backend communication could also be easily wrapped in TLS and some kind of authentication mechanism for the API endpoint.
 
 
-## Questions
-
-* What steps did you took to figure out what you were going to focus on for the assignment?
-
-Firstly I worked out a set of requirements based on the information provided in the assignment, from which I figured out which areas would have the most complexity. I then spent time building the basic skeleton of the application, implementing it with dummy data at each stage, before connecting everything together. Given more time/for a real-world system, I would have used a more test-driven approach but given the scale of the prototype being demanded, and the time constraints, I have focused a lot less on automated testing than I usually would - I figured getting a working prototype was the most important thing to do first.
-
-* About how long did you spend on it?
-
-Around 6 hours, on and off.
-
-* If you had more time, what would you do?
-
-Improve the UI, (automatically) test things a lot more, produce a more extensive drone simulator. I'd also refactor the Drone class to split out logic relating to storing sampled data.
-
-* What is your feedback on the assignment?
-
-It's a pretty extensive test which I struggled to find the time to do. Quite fun though. I'd certainly like to be paid to build systems like this, and have more time to work on them!
-
-
-
