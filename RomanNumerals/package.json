@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashleybaldock/Katas.git"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/jest"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.5.0"
+  }
+}
