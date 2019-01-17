@@ -5,7 +5,7 @@ import Goal from './Goal';
 const testProps = {
   goal: {
     description: 'test description',
-    progress: 0.5,
+    progress: 10,
     target: 20,
     image: 'http://testimagepath'
   }
