@@ -1,0 +1,98 @@
+ @import url('https://fonts.googleapis.com/css?family=Baloo');
+
+.Goals {
+  font-family: 'Baloo', sans-serif;
+  width: 60%;
+  margin: 10px;
+}
+
+.Goals ul, .Goals li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.Goals li {
+  margin-bottom: 10px;
+}
+.Goals li:last-child() {
+  margin-bottom: 0;
+}
+
+
+.ChildGoals {
+  border-radius: 10px;
+  background-color: #6eb5c0;
+  padding: 10px;
+}
+
+.ChildGoals__ChildName, .ChildGoals__GoalsTotal {
+  margin: 0;
+  margin-bottom: 5px;
+  color: #2f2e33;
+}
+
+.ChildGoals li {
+  margin-bottom: 10px;
+}
+.ChildGoals li:last-child() {
+  margin-bottom: 0;
+}
+
+.Goal {
+  height: 150px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #006c84;
+  color: #e2e8e4;
+}
+
+.Goal__Completed {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.Goal__Info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.Goal__Info p {
+  padding: 0;
+  margin: 0;
+}
+.Goal__Info p:nth-child(2) {
+  align-self: flex-end;
+}
+
+.Goal__ProgressBar__Outer {
+  background-color: #e2ebe8;
+  height: 20px;
+  border-radius: 10px;
+}
+.Goal__ProgressBar__Inner {
+  background-color: #8c0004;
+  height: 100%;
+  border-radius: 10px;
+  min-width: 20px;
+}
+
+.Goal__Image {
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.Goal__Image img {
+  max-width:100%;
+  max-height:100%;
+}

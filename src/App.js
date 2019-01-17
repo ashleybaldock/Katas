@@ -9,10 +9,13 @@ import './App.css';
 
 const initialState = {
   auth: {
-    token: null, // null indicates unauthenticated
+    //token: null, // null indicates unauthenticated
+    token: '',
     error: null,
     inProgress: false
-  }
+  },
+  balances: [
+  ]
 };
 
 const store = createStore(

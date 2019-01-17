@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import CenterDialog from './CenterDialog';
 import ConnectedLogin from './ConnectedLogin';
 import ConnectedLoginRedirector from './ConnectedLoginRedirector';
 import ConnectedPrivateRoute from './ConnectedPrivateRoute';
-import Balances from './Balances';
+import ConnectedGoals from './ConnectedGoals';
 
 const Login = () => (
   <CenterDialog>
@@ -19,7 +19,7 @@ class AppRouter extends Component {
     return (
       <Router>
         <div className={this.props.containerClass}>
-          <ConnectedPrivateRoute path="/" component={Balances} />
+          <ConnectedPrivateRoute path="/" component={ConnectedGoals} />
           <Route path="/login" component={Login} />
         </div>
       </Router>

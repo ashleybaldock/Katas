@@ -4,7 +4,7 @@ import './Login.css';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: 'ashleyb', password: '8e6d678f120f5798' };
+    this.state = { username: '', password: '' };
   }
 
   login = (e) => {
@@ -26,12 +26,12 @@ class Login extends Component {
         <ul>
           <li className="Login__Error">{this.props.error}</li>
           <li>
-            <label for="Login__Username" className="Login__Username_Label">Username</label>
+            <label htmlFor="Login__Username" className="Login__Username_Label">Username</label>
             <input type="text" name="username" value={this.state.username} onChange={this.handleInputChange} id="Login__Username" className="Login__Username" />
           </li>
 
           <li>
-            <label for="Login__Password" className="Login__Password_Label">Password</label>
+            <label htmlFor="Login__Password" className="Login__Password_Label">Password</label>
             <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} id="Login__Password" className="Login__Password" />
           </li>
 
