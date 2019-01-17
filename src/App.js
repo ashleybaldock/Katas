@@ -9,12 +9,13 @@ import './App.css';
 
 const initialState = {
   auth: {
-    //token: null, // null indicates unauthenticated
-    token: '',
+    token: null, // null indicates unauthenticated
     error: null,
     inProgress: false
   },
   balances: [
+  ],
+  goals: [
   ]
 };
 
@@ -28,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppRouter { ...{ containerClass: 'App' } }/>
+        <AppRouter { ...{ containerClass: 'App' } } />
       </Provider>
     );
   }

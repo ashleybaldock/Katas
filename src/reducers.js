@@ -1,6 +1,5 @@
 import { LOGIN_STARTED, POST_AUTHENTICATE_SUCCESS, POST_AUTHENTICATE_FAILURE, UPDATE_BALANCES_SUCCESS, UPDATE_BALANCES_FAILURE, UPDATE_GOALS_SUCCESS, UPDATE_GOALS_FAILURE } from './actions';
 
-
 export function roosterApp(state, action) {
   if (!action) { return state; }
   switch (action.type) {
@@ -27,8 +26,9 @@ export function roosterApp(state, action) {
         })
       });
     case UPDATE_BALANCES_SUCCESS:
-      console.log(action.response);
-      return state;
+      return Object.assign({}, state, {
+        balances: action.response
+      });
     case UPDATE_BALANCES_FAILURE:
       if (action.error === '401: Unauthorized') {
         return Object.assign({}, state, {
@@ -40,8 +40,9 @@ export function roosterApp(state, action) {
       }
       return state;
     case UPDATE_GOALS_SUCCESS:
-      console.log(action.response);
-      return state;
+      return Object.assign({}, state, {
+        goals: action.response
+      });
     case UPDATE_GOALS_FAILURE:
       if (action.error === '401: Unauthorized') {
         return Object.assign({}, state, {

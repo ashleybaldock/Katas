@@ -3,7 +3,6 @@ import handleErrors from './handleErrors';
 export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const POST_AUTHENTICATE_SUCCESS = 'POST_AUTHENTICATE_SUCCESS';
 export const POST_AUTHENTICATE_FAILURE = 'POST_AUTHENTICATE_FAILURE';
-export const EXPIRE_AUTH_TOKEN = 'EXPIRE_AUTH_TOKEN';
 
 export function submitLogin({ username, password }) {
   return (dispatch, getState) => {
@@ -26,7 +25,7 @@ export function postAuthenticate({ accessKey, accessPassword }) {
       body: JSON.stringify({ accessKey, accessPassword })
     })
     .then(handleErrors)
-    .then(response => console.log(response) || response.json())
+    .then(response => response.json())
     .then(json => dispatch(postAuthenticateSuccess(json)))
     .catch(error => dispatch(postAuthenticateFailure(error.message)));
   };
@@ -46,19 +45,11 @@ export function postAuthenticateFailure(error) {
   };
 }
 
-export function expireAuthToken() {
-  return {
-    type: EXPIRE_AUTH_TOKEN
-  };
-}
-
 export const UPDATE_BALANCES_SUCCESS = 'UPDATE_BALANCES_SUCCESS';
 export const UPDATE_BALANCES_FAILURE = 'UPDATE_BALANCES_FAILURE';
 
 export function updateBalances() {
   return (dispatch, getState) => {
-    console.log(`updateBalances(): token: ${getState().auth.token}`);
-
     fetch('https://api.roostermoney.com/v1/balance/', {
       method: 'GET',
       headers: {
@@ -68,7 +59,7 @@ export function updateBalances() {
       }
     })
     .then(handleErrors)
-    .then(response => console.log(response) || response.json())
+    .then(response => response.json())
     .then(json => dispatch(updateBalancesSuccess(json)))
     .catch(error => dispatch(updateBalancesFailure(error.message)));
   };
@@ -93,8 +84,6 @@ export const UPDATE_GOALS_FAILURE = 'UPDATE_GOALS_FAILURE';
 
 export function updateGoals() {
   return (dispatch, getState) => {
-    console.log(`updateGoals(): token: ${getState().auth.token}`);
-
     fetch('https://api.roostermoney.com/v1/goals/', {
       method: 'GET',
       headers: {
@@ -104,7 +93,7 @@ export function updateGoals() {
       }
     })
     .then(handleErrors)
-    .then(response => console.log(response) || response.json())
+    .then(response => response.json())
     .then(json => dispatch(updateGoalsSuccess(json)))
     .catch(error => dispatch(updateGoalsFailure(error.message)));
   };
