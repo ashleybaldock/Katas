@@ -1,4 +1,4 @@
-import handleErrors from './handleErrors';
+import handleErrors from './util/handleErrors';
 
 export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const POST_AUTHENTICATE_SUCCESS = 'POST_AUTHENTICATE_SUCCESS';
