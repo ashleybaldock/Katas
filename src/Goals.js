@@ -17,7 +17,7 @@ class Goals extends Component {
     return (
       <div className="ChildGoals">
         <h1 className="ChildGoals__ChildName">{this.processUsername(childGoals.username)}&#39;s saving goals</h1>
-        <p className="ChildGoals__GoalsTotal">{this.processUsername(childGoals.username)} has {formatGbp(childGoals.goalsTotal)} saved toward their goals, and {formatGbp(childGoals.total)} saved in total.</p>
+        <p className="ChildGoals__GoalsTotal">{this.processUsername(childGoals.username)} has {formatGbp(childGoals.goalsTotal)} saved toward their goals, and a total available balance of {formatGbp(childGoals.total)}.</p>
         <ul>
           {childGoals.goals.map((goal, i) => {
             return (
