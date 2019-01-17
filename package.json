@@ -27,6 +27,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "react-testing-library": "^5.4.4",
     "redux-mock-store": "^1.5.3"
   }
 }
