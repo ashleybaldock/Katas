@@ -38,6 +38,9 @@ class Login extends Component {
           <li>
             <button type="submit" disabled={this.props.submitDisabled} onClick={this.login}>Login</button>
           </li>
+          <li style={{ fontSize: 'smaller' }}>
+            This demo has been modified to not call out<br/> to the API, anything will work for the login.
+          </li>
         </ul>
       </div>
     );
