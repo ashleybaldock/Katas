@@ -1,0 +1,49 @@
+.Login {
+  background-color: #6eb5c0;
+  list-style-type: none;
+  padding: 0;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.Login ul {
+  padding: 0;
+}
+
+.Login li {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em;
+}
+
+.Login label {
+  padding: .5em 1em .5em 0;
+  flex: 1;
+}
+
+.Login input {
+  flex: 2;
+}
+.Login input, .Login button {
+  padding: .5em;
+}
+
+.Login li button {
+  border-radius: 10px;
+  background-color: gray;
+  color: white;
+  border: 0;
+  padding: 10px 15px;
+}
+.Login li button:disabled {
+  background-color: dimgray;
+  color: gray;
+}
+
+li.Login__Error {
+  justify-content: center;
+  color: red;
+}
+

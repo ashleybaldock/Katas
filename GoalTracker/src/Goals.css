@@ -1,0 +1,41 @@
+
+.Goals {
+  width: 60%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.Goals ul, .Goals li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.Goals li {
+  margin-bottom: 10px;
+}
+.Goals li:last-child() {
+  margin-bottom: 0;
+}
+
+.ChildGoals {
+  border-radius: 10px;
+  background-color: #6eb5c0;
+  padding: 10px;
+}
+
+.ChildGoals__ChildName, .ChildGoals__GoalsTotal {
+  margin: 0;
+  margin-bottom: 5px;
+  color: #2f2e33;
+  padding-left: 5px;
+}
+
+.ChildGoals li {
+  margin-bottom: 10px;
+}
+.ChildGoals li:last-child() {
+  margin-bottom: 0;
+}
+

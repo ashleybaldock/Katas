@@ -1,0 +1,58 @@
+.Goal {
+  height: 150px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #006c84;
+  color: #e2e8e4;
+}
+
+.Goal__Completed {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.Goal__Info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.Goal__Info p {
+  padding: 0;
+  margin: 0;
+}
+.Goal__Info p:nth-child(2) {
+  align-self: flex-end;
+}
+
+.Goal__ProgressBar__Outer {
+  background-color: #e2ebe8;
+  height: 20px;
+  border-radius: 10px;
+}
+.Goal__ProgressBar__Inner {
+  background-color: #8c0004;
+  height: 100%;
+  border-radius: 10px;
+  min-width: 20px;
+}
+
+.Goal__Image {
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.Goal__Image img {
+  max-width:100%;
+  max-height:100%;
+}
